@@ -16,6 +16,14 @@
             android:layout_gravity="center"
             android:text="Click me"
             android:id="@+id/action_button" />
+
+        <Switch
+            android:layout_marginTop="20dp"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Toggle Hide Button "
+            android:id="@+id/toggle_switch" />
     </LinearLayout>
 
     <LinearLayout
@@ -31,6 +39,14 @@
             android:id="@+id/button_result_text"
             android:gravity="center"
             android:layout_gravity="center" />
+
+        <Button
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="60dp"
+            android:text="Hide"
+            android:id="@+id/visibility_button" />
+
     </LinearLayout>
 
 </LinearLayout>
