@@ -24,10 +24,14 @@ class MainActivity : AppCompatActivity() {
 
         toggle_switch.setOnCheckedChangeListener { compoundButton, isChecked ->
             if(isChecked) {
-                visibility_button.visibility = View.GONE
+                visibility_button.visibility = View.INVISIBLE
             } else {
                 visibility_button.visibility = View.VISIBLE
             }
         }
+
+        hide_spinner_button.setOnClickListener({
+            complex_view.hideSpinner()
+        })
     }
 }
