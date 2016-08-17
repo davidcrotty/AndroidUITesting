@@ -42,3 +42,13 @@ dependencies {
     androidTestCompile 'com.android.support.test.espresso:espresso-core:2.2.2'
     androidTestCompile 'com.android.support.test:runner:0.5'
 }
+
+task grantAnimationPermission(type: Exec, dependsOn: 'installDebug') {
+    commandLine "adb shell pm grant com.my.app.id android.permission.SET_ANIMATION_SCALE".split(' ')
+}
+
+tasks.whenTaskAdded { task ->
+    if (task.name.startsWith('connected')) {
+        task.dependsOn grantAnimationPermission
+    }
+}

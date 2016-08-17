@@ -6,7 +6,9 @@ import android.test.ActivityInstrumentationTestCase2;
 
 import org.junit.Assert;
 import org.junit.Before;
+import org.junit.ClassRule;
 
+import davidcrotty.androiduitesting.testhelper.DisableAnimationsRule;
 import davidcrotty.androiduitesting.view.ComplexView;
 
 import static android.support.test.espresso.Espresso.onView;
@@ -21,6 +23,9 @@ import static android.support.test.espresso.matcher.ViewMatchers.withText;
  * Created by DavidHome on 24/07/2016.
  */
 public class MainActivityTest extends ActivityInstrumentationTestCase2<MainActivity> {
+
+    @ClassRule
+    public static DisableAnimationsRule disableAnimationsRule = new DisableAnimationsRule();
 
     public MainActivityTest() {
         super(MainActivity.class);
