@@ -1,6 +1,7 @@
 package davidcrotty.androiduitesting
 
 import android.os.Bundle
+import android.support.v4.content.ContextCompat
 import android.support.v7.app.AppCompatActivity
 import android.view.View
 import kotlinx.android.synthetic.main.main_activity.*
@@ -13,6 +14,11 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.main_activity)
+
+        if(isInstrumentedRun()) {
+            progress_bar.indeterminateDrawable = ContextCompat.getDrawable(this, R.drawable.ic_launcher)
+        }
+
 
         action_button.setOnClickListener({
             button_result_text.text = "Hello"
@@ -33,5 +39,18 @@ class MainActivity : AppCompatActivity() {
         hide_spinner_button.setOnClickListener({
             complex_view.hideSpinner()
         })
+    }
+
+    fun isInstrumentedRun(): Boolean {
+        val result: Boolean
+        try {
+            classLoader.loadClass(
+                    "davidcrotty.androiduitesting.MainActivityTest")
+            result = true
+        } catch (e: Exception) {
+            result = false
+        }
+
+        return result
     }
 }

@@ -60,6 +60,12 @@
             android:layout_height="200dp">
         </davidcrotty.androiduitesting.view.ComplexView>
 
+        <ProgressBar
+            android:id="@+id/progress_bar"
+            android:indeterminate="true"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
     </LinearLayout>
 
 </LinearLayout>
