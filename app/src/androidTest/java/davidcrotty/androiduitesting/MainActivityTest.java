@@ -41,11 +41,6 @@ public class MainActivityTest extends ActivityInstrumentationTestCase2<MainActiv
         injectInstrumentation(InstrumentationRegistry.getInstrumentation());
         getActivity();
 
-        /* Options:
-         * - directly mod class to detect when its a test case
-         * see:
-         */
-        
         /*
          * Running a test using an indeterminate spinner causes the test to block as it is run on the
          * same thread as the activity see: http://stackoverflow.com/questions/33289152/progressbars-and-espresso
