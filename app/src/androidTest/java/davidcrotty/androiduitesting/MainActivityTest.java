@@ -28,7 +28,6 @@ import static android.support.test.espresso.matcher.ViewMatchers.withText;
  * Created by DavidHome on 24/07/2016.
  */
 @RunWith(AndroidJUnit4.class)
-@LargeTest
 public class MainActivityTest extends ActivityInstrumentationTestCase2<MainActivity> {
 
     public MainActivityTest() {
