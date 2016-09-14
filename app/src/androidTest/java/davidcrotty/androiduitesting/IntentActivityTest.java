@@ -1,5 +1,7 @@
 package davidcrotty.androiduitesting;
 
+import android.app.Instrumentation;
+import android.content.Intent;
 import android.support.test.InstrumentationRegistry;
 import android.support.test.runner.AndroidJUnit4;
 import android.test.ActivityInstrumentationTestCase2;
@@ -28,6 +30,9 @@ public class IntentActivityTest extends ActivityInstrumentationTestCase2<IntentA
     public void setUp() throws Exception {
         super.setUp();
         injectInstrumentation(InstrumentationRegistry.getInstrumentation());
+        Intent intent = new Intent();
+        intent.putExtra("TEXT_KEY", "hello");
+        setActivityIntent(intent);
         getActivity();
     }
 
@@ -39,6 +44,7 @@ public class IntentActivityTest extends ActivityInstrumentationTestCase2<IntentA
 
     @Test
     public void test_when_passing_intent() {
-
+        onView(withId(R.id.text_view))
+        .check(matches(withText("hello")));
     }
 }
