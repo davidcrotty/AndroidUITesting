@@ -1,14 +1,10 @@
 package davidcrotty.androiduitesting;
 
-import android.app.Instrumentation;
 import android.content.Intent;
 import android.support.test.InstrumentationRegistry;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
-import android.test.ActivityInstrumentationTestCase2;
-import android.test.suitebuilder.annotation.LargeTest;
 
-import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -24,6 +20,9 @@ import static android.support.test.espresso.matcher.ViewMatchers.withText;
 @RunWith(AndroidJUnit4.class)
 public class IntentActivityTest {
 
+    //For blocking network calls:
+    //http://stackoverflow.com/questions/30733718/how-to-use-espresso-idling-resource-for-network-calls
+
     @Rule
     public ActivityTestRule<IntentActivity> activityRule =
             new ActivityTestRule<>(IntentActivity.class);
@@ -33,6 +32,7 @@ public class IntentActivityTest {
     public void test_when_not_passing_intent() {
         onView(withId(R.id.text_view))
         .check(matches(withText("")));
+
     }
 
     @Test
