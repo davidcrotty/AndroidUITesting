@@ -1,6 +1,7 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'com.neenbedankt.android-apt'
 
 def cmd = 'git rev-list HEAD --count'
 def gitVersion = cmd.execute().text.trim().toInteger()
@@ -38,6 +39,11 @@ dependencies {
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:appcompat-v7:24.2.0'
     compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+
+    //Toothpick Dependency Injection
+    compile 'com.github.stephanenicolas.toothpick:toothpick-runtime:1.0.0'
+    compile 'com.github.stephanenicolas.toothpick:smoothie:1.0.0'
+    apt 'com.github.stephanenicolas.toothpick:toothpick-compiler:1.0.0'
 
     androidTestCompile 'com.android.support.test:runner:0.4'
     // Set this dependency to use JUnit 4 rules
