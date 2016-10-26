@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import javax.inject.Inject;
 
 import davidcrotty.androiduitesting.presenter.ToothPickPresenter;
+import davidcrotty.androiduitesting.service.StarWarsService;
 import toothpick.Scope;
 import toothpick.Toothpick;
 import toothpick.config.Module;
@@ -26,6 +27,7 @@ public class ToothPickActivity extends AppCompatActivity {
 
         Scope scope = Toothpick.openScope(getApplication());
         scope.installModules(new Module(){{
+            bind(StarWarsService.class).to(StarWarsService.class);
             bind(ToothPickPresenter.class).to(ToothPickPresenter.class);
         }});
         Toothpick.inject(this, scope);
