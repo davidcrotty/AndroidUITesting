@@ -1,12 +1,10 @@
 package davidcrotty.androiduitesting;
 
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.support.v7.app.AppCompatActivity;
 
 import javax.inject.Inject;
 
-import davidcrotty.androiduitesting.module.ToothPickPresenterProvider;
 import davidcrotty.androiduitesting.presenter.ToothPickPresenter;
 import toothpick.Scope;
 import toothpick.Toothpick;
@@ -28,7 +26,7 @@ public class ToothPickActivity extends AppCompatActivity {
 
         Scope scope = Toothpick.openScope(getApplication());
         scope.installModules(new Module(){{
-            bind(ToothPickPresenter.class).toProviderInstance(new ToothPickPresenterProvider());
+            bind(ToothPickPresenter.class).to(ToothPickPresenter.class);
         }});
         Toothpick.inject(this, scope);
         _presenter.doSomething();
