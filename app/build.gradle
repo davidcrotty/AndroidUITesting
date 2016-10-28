@@ -45,6 +45,13 @@ dependencies {
     compile 'com.github.stephanenicolas.toothpick:smoothie:1.0.0'
     apt 'com.github.stephanenicolas.toothpick:toothpick-compiler:1.0.0'
 
+    //GSON
+    compile 'com.google.code.gson:gson:2.7'
+
+    compile 'io.reactivex:rxandroid:1.2.1'
+    compile 'io.reactivex:rxjava:1.1.6'
+
+
     androidTestCompile 'com.android.support.test:runner:0.4'
     // Set this dependency to use JUnit 4 rules
     androidTestCompile 'com.android.support.test:rules:0.4'
