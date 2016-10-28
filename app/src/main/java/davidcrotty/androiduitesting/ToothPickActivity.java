@@ -2,6 +2,11 @@ package davidcrotty.androiduitesting;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
+
+import com.google.gson.Gson;
 
 import javax.inject.Inject;
 
@@ -27,10 +32,27 @@ public class ToothPickActivity extends AppCompatActivity {
 
         Scope scope = Toothpick.openScope(getApplication());
         scope.installModules(new Module(){{
+            bind(ToothPickActivity.class).toInstance(ToothPickActivity.this);
+            bind(Gson.class).toInstance(new Gson());
             bind(StarWarsService.class).to(StarWarsService.class);
             bind(ToothPickPresenter.class).to(ToothPickPresenter.class);
         }});
         Toothpick.inject(this, scope);
-        _presenter.doSomething();
+
+        Button fetchButton = (Button) findViewById(R.id.fetch_button);
+        fetchButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                _presenter.fetchPerson();
+            }
+        });
+    }
+
+    public void showPersonWith(String name, String height) {
+        TextView nameText = (TextView) findViewById(R.id.name_text);
+        nameText.setText(name);
+
+        TextView heightText = (TextView) findViewById(R.id.height_text);
+        heightText.setText(height);
     }
 }
