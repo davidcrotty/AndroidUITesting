@@ -19,8 +19,14 @@ import toothpick.config.Module;
 /**
  * Created by DavidHome on 24/10/2016.
  */
-
 public class ToothPickActivity extends AppCompatActivity {
+
+    public interface ProgressListener {
+        void onProgressShown();
+        void onProgressDismissed();
+    }
+
+    private ProgressListener _listener;
 
     @Inject
     ToothPickPresenter _presenter;
@@ -43,6 +49,7 @@ public class ToothPickActivity extends AppCompatActivity {
         fetchButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                _listener.onProgressShown();
                 _presenter.fetchPerson();
             }
         });
@@ -54,5 +61,11 @@ public class ToothPickActivity extends AppCompatActivity {
 
         TextView heightText = (TextView) findViewById(R.id.height_text);
         heightText.setText(height);
+        if(_listener == null) return;
+        _listener.onProgressDismissed();
+    }
+
+    public void setProgressListenerWith(ProgressListener listener) {
+        _listener = listener;
     }
 }
