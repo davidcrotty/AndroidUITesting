@@ -2,6 +2,9 @@ package davidcrotty.androiduitesting.helper;
 
 import android.support.test.espresso.IdlingResource;
 
+import org.jetbrains.annotations.NotNull;
+
+import davidcrotty.androiduitesting.ProgressListener;
 import davidcrotty.androiduitesting.ToothPickActivity;
 
 /**
@@ -10,14 +13,19 @@ import davidcrotty.androiduitesting.ToothPickActivity;
 
 public class ProgressIdlingResource implements IdlingResource {
 
-    private ToothPickActivity _toothPickActivity;
+    private ProgressListener _targetActivity;
     private ResourceCallback _callback;
     private boolean progressDismissed = true;
 
-    public ProgressIdlingResource(ToothPickActivity toothPickActivity) {
-        _toothPickActivity = toothPickActivity;
+    public ProgressIdlingResource(ProgressListener toothPickActivity) {
+        _targetActivity = toothPickActivity;
 
-        ToothPickActivity.ProgressListener listener = new ToothPickActivity.ProgressListener() {
+        ProgressListener listener = new ProgressListener() {
+            @Override
+            public void setProgressListenerWith(@NotNull ProgressListener listener) {
+                //no op
+            }
+
             @Override
             public void onProgressShown() {
                 progressDismissed = false;
@@ -31,7 +39,7 @@ public class ProgressIdlingResource implements IdlingResource {
             }
         };
 
-        _toothPickActivity.setProgressListenerWith(listener);
+        _targetActivity.setProgressListenerWith(listener);
     }
 
     @Override

@@ -19,12 +19,7 @@ import toothpick.config.Module;
 /**
  * Created by DavidHome on 24/10/2016.
  */
-public class ToothPickActivity extends AppCompatActivity {
-
-    public interface ProgressListener {
-        void onProgressShown();
-        void onProgressDismissed();
-    }
+public class ToothPickActivity extends AppCompatActivity implements ProgressListener {
 
     private ProgressListener _listener;
 
@@ -65,7 +60,18 @@ public class ToothPickActivity extends AppCompatActivity {
         _listener.onProgressDismissed();
     }
 
+    @Override
     public void setProgressListenerWith(ProgressListener listener) {
         _listener = listener;
+    }
+
+    @Override
+    public void onProgressShown() {
+
+    }
+
+    @Override
+    public void onProgressDismissed() {
+
     }
 }
